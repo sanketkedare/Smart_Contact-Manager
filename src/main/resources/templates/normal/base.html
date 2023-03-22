@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+	integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
+
+<title th:text="${title}">Base html</title>
+</head>
+<body>
+
+	<!-- Naavabar -->
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+		<a class="navbar-brand" href="#">Smart Contact Manager</a>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+			<ul class="navbar-nav ml-auto text-uppercase">
+
+				<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+
+
+
+				<li class="nav-item">
+				<a th:href="@{/user/profile}" class="nav-link" tabindex="-1"
+					aria-disabled="true"> 
+					<span th:text="${user.name}">
+					</span>
+				</a></li>
+
+				<li class="nav-item"><a class="nav-link" th:href="@{/logout}"
+					tabindex="-1" aria-disabled="true">log out</a></li>
+
+
+			</ul>
+
+
+		</div>
+
+	</nav>
+	<!-- Side bar -->
+
+
+	<div class="sidebar mt-1">
+
+		<span onclick="toggleSidebar()" class="crossBtn">&times;</span> 
+		
+		<a th:href="@{/user/index}" class="item"> <i class="fa fa-home"
+			aria-hidden="true"> </i>Home</a> 
+			
+		<a th:href="@{/user/show-contacts/0}" class="item"> <i class="fa fa-id-card-alt" 
+			aria-hidden="true"></i> View Contacts</a> 
+			
+		<a th:href="@{/user/add-contact}" class="item"> <i class="fa fa-pencil-alt" 
+			aria-hidden="true"> </i> Add Contacts</a> 
+		
+		<a th:href="@{/user/profile}" class="item"> <i class="fa fa-user-circle"
+			aria-hidden="true"> </i> Your Profile</a> 
+			
+		<a href="" class="item"> <i class="fa fa-cogs" 
+		    aria-hidden="true"></i> Settings</a> 
+		
+		<a th:href="@{/logout}" class="item"> <i class="fa fa-sign-out-alt" 
+		    aria-hidden="true"> </i>logout</a>
+
+		<div class="divider"></div>
+
+	</div>
+	<!-- End of side bar -->
+	
+	
+
+	<!-- Content Area -->
+	<div class="content mt-6">
+		<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+		<!--         Massage box -->
+		<!-- 		<div th:if="${session.massege}" class = "container"> -->
+		<!-- 			<div class="alert alert-success text-center" role="alert">Added -->
+		<!-- 				Successfully</div> -->
+		<!-- <!-- 			<div class="alert alert-danger text-center" role="alert">This is a danger -->
+		<!-- <!-- 				alert—check it out!</div> -->
+		<!-- 		</div> -->
+
+		<div th:replace="${content}"></div>
+	</div>
+
+	<!-- End of Content area -->
+
+
+
+
+
+	<!-- Optional JavaScript; choose one of the two! -->
+
+	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+
+	<!-- Option 2: jQuery, Popper.js, and Bootstrap JS-->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+		integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+		crossorigin="anonymous"></script>
+		
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+	<script>
+	function deleteContact(cId)
+	{
+		swal({
+			  title: "Are you sure?",
+			  text: "Once deleted, you will not be able to recover this Contact file!",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) 
+			  {
+			    window.location="/user/delete/"+cId;
+			  } else {
+			    swal("Your contact is safe!");
+			  }
+			});
+	}
+	
+	</script>
+	
+	<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

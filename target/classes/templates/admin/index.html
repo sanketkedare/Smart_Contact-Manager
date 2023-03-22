@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Sending Email</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous" />
+
+</head>
+<body class="bg-dark">
+	<div class="container p-5">
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<div class="card">
+					<div class="card-body">
+					
+						<p class="text-center fs-3">Send Your Email</p>
+						
+						<th:block th:if="${session.msg}">
+						
+							<p class ="text-center text-success">[[${session.msg}]]</p>
+							
+						</th:block>
+						
+						<form action="sendMail" method="post">
+						
+							<div class="mb-3">
+							
+								<label>Enter Email ID To</label> 
+								
+								<input th:value= "${emailId}"
+								       type="text" 
+								       name="to"
+									   class="form-control">
+							</div>
+
+							<div class="mb-3">
+							
+								<label>Subject</label> 
+								
+								<input type="text" 
+								       name="subject"
+									   class="form-control">
+							</div>
+
+							<div class="mb-3">
+							
+								<label>Message</label>
+								
+								<textarea rows="5" 
+								          cols="" 
+								          class="form-control" 
+								          name="massage">
+								</textarea>
+								
+							</div>
+							
+							<button class="btn btn-primary col-md-12">Send</button>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
